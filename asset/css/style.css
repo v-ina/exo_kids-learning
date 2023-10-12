@@ -23,7 +23,6 @@ a{
     color: white;
     transition: 0.3s background-color ease-in-out;
 }
-}
 h1, h2{
     color: #2D3E50;
 }
@@ -53,13 +52,17 @@ h2{
 .flex_navmenu a:hover{
     color: #E84C3D;
 }
+.flex_navbar_mobile{
+    display: none;
+}
 
 
 /* ----------banner---------- */
 .banner{
     background-image: url(../img/banner.jpeg);
-    background-size: 100%;
+    background-size: cover;
     background-position: 30%;
+    background-repeat: no-repeat;
     height: 400px;
     display: flex;
     flex-direction: column;
@@ -96,6 +99,9 @@ h2{
 .cours_box{
     width: 30%;
     background-color: white;    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .flex_cours>.cours_box:nth-child(1) > div:first-child{
     width: 90%; height: 200px;
@@ -249,4 +255,125 @@ footer > p{
     margin-top: 2rem;
     border-top: 1px solid #56749574;
     padding-top: 2rem;
+}
+
+
+/* ----------responsif---------- */
+@media screen and (max-width : 860px) {
+    .flex_navbar{
+        display: none;
+    }
+    .flex_navbar_mobile{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 10% 1rem 10%;
+        background-color: #2D3E50;
+        border-bottom: 3px solid #E84C3D;
+    }     
+    .flex_navbar_mobile img{
+        height: 80px;
+    }
+    .flex_navbar_mobile input{
+        display: none;
+    }
+    .menuburger{
+        position: relative;
+        height: 30px;   width: 50px;
+    }
+    .menuburger > div > label > div{
+        display: block;
+        z-index: 3;
+        height: 3px;   width: 50px;
+        background-color: #E84C3D;
+        position: absolute;
+    }
+    .bar-1{
+        top: 0%;    transition: 0.3s;
+    }
+    .bar-2{    
+        top:50%;    transform:translateY(-50%);    transition: 0.3s;
+    }
+    .bar-3{    
+        bottom:0%;    transition: 0.3s;
+    } 
+    .menuburger input[type=checkbox]:checked ~ label div:nth-child(1){
+        top: 50%;
+        transform: rotate(45deg);
+    }
+    .menuburger input[type=checkbox]:checked ~ label div:nth-child(2){
+        opacity: 0;
+    }
+    .menuburger input[type=checkbox]:checked ~ label div:nth-child(3){
+        top:50%;
+        transform: rotate(-45deg);
+    } 
+    .menuburger label{
+        display: inline-block;
+        height: 30px;   width: 50px;
+        cursor: pointer;
+    }
+    .flex_nav_menuburger a{
+        display: block;
+        background-color: rgba(25, 25, 25, 0.55);;
+        width: 200px;
+        margin-left: -280%;
+        padding: 5px 0px 5px 0px;
+    }
+    .flex_nav_menuburger a:hover{
+        color: #a2362c;
+        font-weight: bold;
+    }
+    .flex_cours{
+        flex-direction: column;
+        gap: 30px;
+    }
+    .cours_box{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .cours_box a{
+        font-size: 12px;
+    }
+    .menuburger input:not(:checked) ~.menuburger>nav{
+        display: none;
+    }
+    .menuburger input:checked ~.menuburger>nav{
+        display: block
+    }
+}
+
+@media screen and (max-width : 600px) {
+    .banner h1{
+        font-size: 3rem;
+    }
+    .flex_ressources_img{
+        flex-direction: column;
+        gap: 350px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .flex_ressources_content{
+        flex-direction: column;
+        gap: 80px;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 4rem;
+    }
+    .flex_ressources_content>div{
+        width: 100%;
+    }
+    fieldset{
+        width: 80%;
+    }
+    footer{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width : 400px){
+    .banner h1{
+        font-size: 2rem;
+    }
 }
