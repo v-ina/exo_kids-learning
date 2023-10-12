@@ -33,7 +33,7 @@ h2{
 
 
 /* ----------nav bar---------- */
-.flex_navbar{
+.flex_navbar_desktop{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,18 +41,80 @@ h2{
     background-color: #2D3E50;
     border-bottom: 3px solid #E84C3D;
 }
-.flex_navbar img{
+.flex_navbar_desktop img{
     height: 100px;  
 }
-.flex_navmenu{
+.flex_nav_menudesktop{
     display: flex;
     align-items: center;
     gap: 50px;
 }
-.flex_navmenu a:hover{
+.flex_nav_menudesktop a{
+    color: white;
+    transition: 0.3s color,font-weight ease-in-out;
+}
+.flex_nav_menudesktop a:hover{
     color: #E84C3D;
 }
-.flex_navbar_mobile{
+.burger{
+    height: 50px;  width: 70px;
+    position: relative;
+}
+.bar-1{
+    height: 10px;    width: 100%;
+    background-color: #E84C3D;
+    position: absolute;
+    transition: 0.3s ease-in-out;
+    z-index: 3;
+}
+.bar-2{
+    height: 10px;    width: 100%;
+    background-color: #E84C3D;
+    position: absolute;
+    top: 50%;   transform: translateY(-50%);
+    transition: 0.3s ease-in-out;
+    z-index: 3;
+}
+.bar-3{
+    height: 10px;    width: 100%;
+    background-color: #E84C3D;
+    position: absolute;
+    bottom: 0%; 
+    transition: 0.3s ease-in-out;
+    z-index: 3;
+}
+.menuburger:hover .flex_nav_menuburger{
+    display: block; 
+}
+.menuburger:hover .bar-1{
+    top:50%;
+    transform: rotate(45deg);
+}
+.menuburger:hover .bar-2{
+    display: none;
+}
+.menuburger:hover .bar-3{
+    top:50%;
+    transform: rotate(-45deg);
+}
+.flex_nav_menuburger{
+    position: absolute;
+    top: 12%;   right: 5%;
+}
+.flex_nav_menuburger a{
+    height: 50px;   width: 150px;
+    background-color: #2d3e509f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex_nav_menuburger a:hover{
+    color: #a2362c;
+}
+.flex_nav_menuburger{
+    display: none;
+}
+.menuburger{
     display: none;
 }
 
@@ -102,6 +164,7 @@ h2{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 1px 1px 5px rgb(224, 224, 224);
 }
 .flex_cours>.cours_box:nth-child(1) > div:first-child{
     width: 90%; height: 200px;
@@ -164,6 +227,7 @@ h2{
     border: 5px solid white;
     position: absolute;
     transform: translateX(-50%);
+    box-shadow: 1px 1px 5px rgb(224, 224, 224);
 }
 .flex_ressources_content{
     margin-top: 3rem;
@@ -178,6 +242,7 @@ h2{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 1px 1px 5px rgb(224, 224, 224);
 }
 .flex_ressources_content p:first-child{
     font-style: italic;
@@ -205,6 +270,7 @@ fieldset{
     border: none;
     text-align: left;
     padding: 2rem;
+    box-shadow: 1px 1px 5px rgb(224, 224, 224);
 }
 label{
     display: inline-block;
@@ -260,69 +326,11 @@ footer > p{
 
 /* ----------responsif---------- */
 @media screen and (max-width : 860px) {
-    .flex_navbar{
-        display: none;
-    }
-    .flex_navbar_mobile{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 10% 1rem 10%;
-        background-color: #2D3E50;
-        border-bottom: 3px solid #E84C3D;
-    }     
-    .flex_navbar_mobile img{
-        height: 80px;
-    }
-    .flex_navbar_mobile input{
+    .flex_nav_menudesktop{
         display: none;
     }
     .menuburger{
-        position: relative;
-        height: 30px;   width: 50px;
-    }
-    .menuburger > div > label > div{
-        display: block;
-        z-index: 3;
-        height: 3px;   width: 50px;
-        background-color: #E84C3D;
-        position: absolute;
-    }
-    .bar-1{
-        top: 0%;    transition: 0.3s;
-    }
-    .bar-2{    
-        top:50%;    transform:translateY(-50%);    transition: 0.3s;
-    }
-    .bar-3{    
-        bottom:0%;    transition: 0.3s;
-    } 
-    .menuburger input[type=checkbox]:checked ~ label div:nth-child(1){
-        top: 50%;
-        transform: rotate(45deg);
-    }
-    .menuburger input[type=checkbox]:checked ~ label div:nth-child(2){
-        opacity: 0;
-    }
-    .menuburger input[type=checkbox]:checked ~ label div:nth-child(3){
-        top:50%;
-        transform: rotate(-45deg);
-    } 
-    .menuburger label{
-        display: inline-block;
-        height: 30px;   width: 50px;
-        cursor: pointer;
-    }
-    .flex_nav_menuburger a{
-        display: block;
-        background-color: rgba(25, 25, 25, 0.55);;
-        width: 200px;
-        margin-left: -280%;
-        padding: 5px 0px 5px 0px;
-    }
-    .flex_nav_menuburger a:hover{
-        color: #a2362c;
-        font-weight: bold;
+        display: flex;
     }
     .flex_cours{
         flex-direction: column;
@@ -331,15 +339,10 @@ footer > p{
     .cours_box{
         width: 80%;
         margin: 0 auto;
+        border-radius: 5px;
     }
     .cours_box a{
         font-size: 12px;
-    }
-    .menuburger input:not(:checked) ~.menuburger>nav{
-        display: none;
-    }
-    .menuburger input:checked ~.menuburger>nav{
-        display: block
     }
 }
 
